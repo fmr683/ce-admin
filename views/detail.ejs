@@ -1,0 +1,81 @@
+<% include partials/header %>
+
+<div class="container">
+    <h1>Detail View</h1>
+    <a href="/v1/vevent/list" style="float: right; padding-bottom: 10px;">Back</a>
+    <table class="table">
+        <tr>
+            <td><b>Device No:</b></td>
+            <td>#<%= data[0].device_no %></td>
+        </tr>
+
+        <tr>
+            <td><b>Speed:</b></td>
+            <td><%= data[0].speed %></td>
+        </tr>
+
+        <tr>
+            <td><b>Event Type:</b></td>
+            <td><%= (data[0].event_type ==1 ? 'Motion' : 'On-Road')  %></td>
+        </tr>
+
+        <tr>
+            <td><b>Event Date:</b></td>
+            <td><%= new Date(data[0].created_at).getFullYear() %>-<%= new Date(data[0].created_at).getMonth() %>-<%= new Date(data[0].created_at).getDate() %>
+                 0<%= new Date(data[0].created_at).getHours() %>:0<%= new Date(data[0].created_at).getMinutes() %>
+            </td>
+        </tr>
+
+    </table>
+
+    <h2>Location</h2>
+    <div id="map"></div>
+
+    <h3>Videos</h3>
+
+    <b>Clip 1</b><br/>
+    <video width="400" controls>
+        <source src="/videos/<%= data[0].device_no %>/front.mp4" type="video/mp4">
+    </video>
+
+    <br/><br/>
+    <b>Clip 2</b><br/>
+    <video width="400" controls>
+        <source src="/videos/<%= data[0].device_no %>/back.mp4" type="video/mp4">
+    </video>
+
+    <br/><br/>
+    <a href="/v1/vevent/list" style="float: right; padding-bottom: 10px;">Back</a>
+</div>
+
+
+<script>
+
+function addZero(i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
+    var uluru = {lat:  <%= data[0].lat %>, lng:  <%= data[0].lng %>};
+        // Initialize and add the map
+        function initMap() {
+          // The location of Uluru
+          
+          // The map, centered at Uluru
+          var map = new google.maps.Map(
+              document.getElementById('map'), {zoom: 15, center: uluru});
+          // The marker, positioned at Uluru
+          var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+            </script>
+            <!--Load the API from the specified URL
+            * The async attribute allows the browser to render the page while the API loads
+            * The key parameter will contain your own API key (which is not needed for this tutorial)
+            * The callback parameter executes the initMap() function
+            -->
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK_6gIK_ahOJOK9PGULyMk94X6ozXLHf8&callback=initMap"></script>
+
+
+<% include partials/footer %>

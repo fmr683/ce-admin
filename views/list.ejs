@@ -1,0 +1,22 @@
+<% include partials/header %>
+
+<div class="container">
+    <h1>Event List</h1>
+    <table style="width:100%" class="table">
+        <tr>
+            <th>Device No</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+        <% data.forEach(function(row) { %>
+            <tr>
+                <td><%= row.device_no %></td>
+                <td><%= new Date(row.created_at).getFullYear() %>-<%= new Date(row.created_at).getMonth() %>-<%= new Date(row.created_at).getDate() %></td>
+                <td><a href="/v1/vevent/detail/<%= row.id %>">More Details</a></td>
+            </tr>
+        <% }); %>
+    </table>
+
+</div>
+
+<% include partials/footer %>
