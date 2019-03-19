@@ -12,6 +12,7 @@ var authentication = require('./middlewares/authentication');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var veventRouter = require('./routes/vevent');
+var deviceRouter = require('./routes/device');
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use(function(req, res, next) {
 app.use('/', indexRouter);
 app.use('/v1/users', usersRouter);
 app.use('/v1/vevent', veventRouter);
+app.use('/v1/device', deviceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -29,6 +29,6 @@
     "tmpPath": "public/tmp",
     "thumbWidth": 200,
     "thumbHeight": 250,
-    "thumbnail": "public/images/api/thumbnail/",
-    "fileSize": 5 // mb
+    "thumbnail": "public/videos/",
+    "fileSize": 500 // mb
 }

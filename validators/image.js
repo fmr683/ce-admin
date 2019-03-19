@@ -9,7 +9,7 @@ var responseMessages = require('../lib/response-messages');
 
 exports.fileFilterValidation = function (req, file, cb) {
 
-    let fileTypes = util.videoTypes().concat(util.imageTypes());
+    let fileTypes = util.videoTypes();
 
     if (!fileTypes.includes(file.mimetype)) { // Not found
         // To reject this file pass `false`, like so:
