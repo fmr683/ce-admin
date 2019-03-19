@@ -11,8 +11,7 @@ module.exports = class VEvent extends Model {
 
     create(data) {
 
-        let now = moment();
-        let dataValues = [data.device_id, data.lat, data.lng, data.speed, data.event_type, now.format()];
+        let dataValues = [data.device_id, data.lat, data.lng, data.speed, data.event_type, new Date().toISOString().slice(0, 19).replace('T', ' ')];
         return this.dbQuery('INSERT INTO vevent (device_id, lat, lng, speed, event_type, created_at) VALUES ( ? , ? , ?, ?, ?, ?)', dataValues);
     }
 
