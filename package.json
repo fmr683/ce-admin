@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon start ./bin/www",
-    "devstart": "node ./bin/www",
+    "devstart": "pm2 start ./bin/www",
     "stagingstart": "PORT=8080 NODE_ENV=staging node ./bin/www",
     "prodstart": "PORT=8080 NODE_ENV=prod node ./bin/www"
   },
